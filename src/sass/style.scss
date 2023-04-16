@@ -1,0 +1,213 @@
+@use './colors' as *;
+@use './media' as *;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	min-height: 100vh;
+	min-height: 100svh;
+	font-family: 'Raleway', sans-serif;
+	color: $color-pale-blue;
+	background-color: $color-very-dark-blue;
+	background-image: url(../../images/bg-mobile.png);
+	background-size: cover;
+	background-position: center;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	@include desktop {
+		background-image: url(../../images/bg-desktop.png);
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: bottom;
+	}
+}
+
+main {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 25px;
+	gap: 15px;
+
+	@include desktop {
+		flex-direction: row;
+		align-items: flex-end;
+	}
+}
+
+.actions {
+	background-color: $color-dark-blue;
+	width: 100%;
+	padding: 40px;
+	border-radius: 10px 120px 10px 10px;
+	max-width: 500px;
+
+	@include desktop {
+		width: 350px;
+	}
+
+	&__box {
+		display: flex;
+		gap: 15px;
+		margin-top: 30px;
+
+		.action {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: $color-very-dark-blue;
+			height: 50px;
+			width: 50px;
+			border-radius: 8px;
+		}
+	}
+}
+
+.usage {
+	background-color: $color-dark-blue;
+	width: 100%;
+	padding: 30px;
+	position: relative;
+	border-radius: 10px;
+	max-width: 500px;
+
+	@include desktop {
+		padding: 40px;
+	}
+
+	&__text {
+		text-align: center;
+		margin-bottom: 18px;
+
+		@include desktop {
+			text-align: start;
+		}
+
+		span {
+			font-weight: 700;
+		}
+	}
+
+	&__line {
+		height: 20px;
+		width: 100%;
+		background-color: $color-very-dark-blue;
+		border-radius: 10px;
+		overflow: hidden;
+		padding: 2px;
+		margin-bottom: 10px;
+
+		.progress {
+			width: 77%;
+			height: 100%;
+			border-radius: 10px;
+			background-image: $gradient;
+			display: flex;
+			justify-content: flex-end;
+			padding: 2px;
+
+			.dot {
+				aspect-ratio: 1 / 1;
+				background-color: $color-white;
+				border-radius: 50%;
+			}
+		}
+	}
+
+	&__capacity {
+		display: flex;
+		justify-content: space-between;
+		font-weight: 700;
+		margin-bottom: 20px;
+
+		@include desktop {
+			margin-bottom: 0;
+		}
+	}
+
+	&__left {
+		position: absolute;
+		background-color: $color-white;
+		border: 1px solid $color-very-dark-blue;
+		border-radius: 10px;
+		padding: 16px 24px;
+		font-weight: 700;
+		left: 50%;
+		transform: translateX(-50%);
+
+		@include desktop {
+			border-radius: 10px 10px 0 10px;
+			top: -50%;
+			left: auto;
+			right: 40px;
+			transform: translateX(0);
+			transform: translateY(50%);
+
+			&::before {
+				content: "";
+				position: absolute;
+				width: 0;
+				height: 0;
+				border-bottom: 26px solid transparent;
+				border-right: 27px solid $color-very-dark-blue;
+				bottom: -26px;
+				right: -1px;
+			}
+
+			&::after {
+				content: "";
+				position: absolute;
+				width: 0;
+				height: 0;
+				border-bottom: 25px solid transparent;
+				border-right: 25px solid $color-white;
+				bottom: -25px;
+				right: 0px;
+			}
+		}
+
+		p {
+			font-size: 40px;
+			color: black;
+			display: flex;
+			align-items:center;
+			gap: 10px;
+			line-height: 1;
+		}
+
+		span {
+			color: $color-grayish-blue;
+			font-size: 12px;
+			white-space: nowrap;
+		}
+	}
+}
+
+.attribution {
+	margin-top: 50px;
+	font-size: 11px;
+	text-align: center;
+	color: $color-pale-blue;
+}
+
+.attribution a {
+	color: $color-atribution;
+	transition: color 0.3s;
+	text-decoration: none;
+}
+
+.attribution a:hover {
+	color: $color-grayish-blue;
+}
